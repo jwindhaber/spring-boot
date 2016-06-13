@@ -8,6 +8,7 @@ def project = { Map map, String projectPath ->
 }.curry(projectMap)
 
 project 'lesson-01'
+project 'lesson-02'
 
 
 rootProject.children.each { definedProject ->
