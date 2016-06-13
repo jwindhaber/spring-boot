@@ -1,0 +1,25 @@
+def projectMap = [:]
+
+def project = { Map map, String projectPath ->
+    String projectName = projectPath.tokenize("/")[-1]
+
+    map.put(projectName, projectPath)
+    include projectName as String
+}.curry(projectMap)
+
+project 'lesson-01'
+
+
+rootProject.children.each { definedProject ->
+    String projectName = definedProject.name.replaceAll("\\p{Upper}") { "-${it.toLowerCase()}" }
+
+    def path = projectMap[projectName] ?: ""
+
+    File projectDir = new File(settingsDir, path)
+    String buildFileName = projectName + '.gradle';
+
+    assert new File(projectDir, buildFileName).exists(), "File '$buildFileName' in project path '$path' does not exist"
+
+    definedProject.projectDir = new File(settingsDir, path)
+    definedProject.setBuildFileName(projectName + '.gradle')
+}
