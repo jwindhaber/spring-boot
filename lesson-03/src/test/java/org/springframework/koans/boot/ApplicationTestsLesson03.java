@@ -30,14 +30,17 @@ public class ApplicationTestsLesson03 {
 
 
 	@Test
-	public void testHelloWorld() throws Exception {
-
-        // Guard to check if persistence is not up!
-        Assert.assertNull(jdbcTemplate);
+	public void responseIsHelloWorld() throws Exception {
 
 		this.mvc.perform(get("/hello").accept(MediaType.TEXT_PLAIN))
 				.andExpect(status().isOk()).andExpect(content().string("Hello World!"));
+	}
 
+    @Test
+	public void persistenceLayerNotAccessible() throws Exception {
+
+        // Guard to check if persistence is not up!
+        Assert.assertNull(jdbcTemplate);
 
 	}
 
