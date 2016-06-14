@@ -1,0 +1,16 @@
+# Idea
+/.idea/artifacts
+/.idea/copyright
+/.idea/libraries
+/.idea/inspectionProfiles
+/.idea/shelf
+/.idea/dictionaries
+/.idea/.name
+/.idea/*.xml
+/.idea/*.ids
+*.iml
+
+# Gradle
+.gradle
+build/
+classes/
