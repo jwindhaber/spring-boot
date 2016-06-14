@@ -6,13 +6,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * @author juergen.windhaber on 13.06.2016.
- * @since 1.0.0
+ *
+ * See: <a href="http://docs.spring.io/spring-boot/docs/1.4.0.M3/reference/htmlsingle/#howto-use-spring-data-repositories">Use Spring Data repositories</a>
  */
+
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("org.springframework.koans.boot.repository")
-@EntityScan({"org.springframework.koans.boot.entity"})
+@EnableJpaRepositories("org.springframework.koans.boot.persistence.repository1")
+@EntityScan({"org.springframework.koans.boot.persistence.entity"})
 public class PersistenceConfiguration {
 
 
