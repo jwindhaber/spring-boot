@@ -9,6 +9,7 @@ def project = { Map map, String projectPath ->
 
 project 'lesson-01'
 project 'lesson-02'
+project 'lesson-03'
 
 
 rootProject.children.each { definedProject ->
