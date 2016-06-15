@@ -1,11 +1,9 @@
 jar {
-	baseName = 'lesson-04'
+	baseName = 'lesson-05'
 	version = '0.0.1-SNAPSHOT'
 }
 
 dependencies {
-
-
 
 	compile('org.springframework.boot:spring-boot-starter')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
@@ -17,5 +15,10 @@ dependencies {
 	//compile('org.springframework.data:spring-data-rest-hal-browser')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('com.h2database:h2')
+
+
+	compile project(":ignite-auto-configuration")
+
+
 
 }

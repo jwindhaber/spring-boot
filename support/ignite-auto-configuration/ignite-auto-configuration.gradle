@@ -1,0 +1,20 @@
+jar {
+	baseName = 'support-library'
+	version = '1.0.0'
+}
+
+dependencies {
+
+	compile 'org.apache.ignite:ignite-core:1.6.0'
+	compile 'org.apache.ignite:ignite-spring:1.6.0'
+	optional ('org.springframework.boot:spring-boot-starter')
+
+//	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+//	compile('org.springframework.boot:spring-boot-starter-data-rest')
+//
+//	//uncomment for hal browser
+//	//compile('org.springframework.data:spring-data-rest-hal-browser')
+//	compile('org.springframework.boot:spring-boot-starter-web')
+//	runtime('com.h2database:h2')
+
+}
