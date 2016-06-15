@@ -12,7 +12,7 @@ project 'lesson-02'
 project 'lesson-03'
 project 'lesson-04'
 project 'lesson-05'
-project 'support/ignite-auto-configuration'
+project 'support/ignite-spring-boot-starter'
 
 
 rootProject.children.each { definedProject ->
