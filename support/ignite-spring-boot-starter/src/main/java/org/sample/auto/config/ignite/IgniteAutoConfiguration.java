@@ -15,13 +15,26 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Arrays;
 
 /**
- * @author juergen.windhaber on 15.06.2016.
- * @since 1.0.0
+ * See:
+ * <ul>
+ *    <li><a href="http://docs.spring.io/spring-boot/docs/1.4.0.M3/reference/htmlsingle/#boot-features-external-config-typesafe-configuration-properties">Type-safe Configuration Properties</a></li>
+ *    <li><a href="http://docs.spring.io/spring-boot/docs/1.4.0.M3/reference/htmlsingle/#boot-features-developing-auto-configuration">Creating your own auto-configuration</a></li>
+ *    <li>Define the spring.factories file</li>
+ * </ul>
+ *
+ * @see EnableConfigurationProperties
+ *
  */
 @Configuration
 @EnableConfigurationProperties(IgniteConfigurationProperties.class)
 public class IgniteAutoConfiguration {
 
+    /**
+     *See: <a href="http://docs.spring.io/spring-boot/docs/1.4.0.M3/reference/htmlsingle/#boot-features-condition-annotations">Condition annotations</a>
+     *
+     * @see ConditionalOnMissingBean
+     *
+     */
     @Bean
     @ConditionalOnMissingBean(Ignite.class)
     public Ignite ignite(ApplicationContext applicationContext, IgniteConfigurationProperties igniteConfigurationProperties ) throws IgniteCheckedException {

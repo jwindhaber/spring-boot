@@ -4,8 +4,7 @@ import org.apache.ignite.spi.IgniteSpiException;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @author juergen.windhaber on 15.06.2016.
- * @since 1.0.0
+ * @see ConfigurationProperties
  */
 @ConfigurationProperties(prefix = "ignite")
 public class IgniteConfigurationProperties {

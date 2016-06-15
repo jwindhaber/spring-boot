@@ -8,6 +8,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 /**
  *
  * See: <a href="http://docs.spring.io/spring-boot/docs/1.4.0.M3/reference/htmlsingle/#howto-use-spring-data-repositories">Use Spring Data repositories</a>
+ *
+ * @see EnableJpaRepositories
+ * @see EntityScan
+ * @see EnableTransactionManagement
+ * @see Configuration
  */
 
 @Configuration
