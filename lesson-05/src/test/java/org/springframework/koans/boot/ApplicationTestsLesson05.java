@@ -1,6 +1,7 @@
 package org.springframework.koans.boot;
 
 import org.apache.ignite.Ignite;
+import org.apache.ignite.IgniteCache;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,9 +18,22 @@ public class ApplicationTestsLesson05 {
     private Ignite ignite;
 
     @Test
-    public void getBarneyOverRest() throws Exception {
+    public void igniteClusterIsWorking() throws Exception {
 
         Assert.assertNotNull(ignite);
+
+        IgniteCache<Integer, String> cache = ignite.getOrCreateCache("myCacheName");
+
+        // Store keys in cache (values will end up on different cache nodes).
+        for (Integer i = 0; i < 10; i++)
+            cache.put(i, Integer.toString(i));
+
+        for (Integer i = 0; i < 10; i++) {
+
+            System.out.println("Got [key=" + i + ", val=" + cache.get(i) + ']');
+
+            Assert.assertEquals(i.toString(),cache.get(i));
+        }
 
 
     }
