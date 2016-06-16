@@ -26,7 +26,6 @@ import java.util.Arrays;
  *
  */
 @Configuration
-@EnableConfigurationProperties(IgniteConfigurationProperties.class)
 public class IgniteAutoConfiguration {
 
     /**
@@ -36,7 +35,6 @@ public class IgniteAutoConfiguration {
      *
      */
     @Bean
-    @ConditionalOnMissingBean(Ignite.class)
     public Ignite ignite(ApplicationContext applicationContext, IgniteConfigurationProperties igniteConfigurationProperties ) throws IgniteCheckedException {
 
         IgniteConfiguration igniteConfiguration = new IgniteConfiguration();
