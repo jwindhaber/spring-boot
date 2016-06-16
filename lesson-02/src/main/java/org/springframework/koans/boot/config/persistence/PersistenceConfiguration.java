@@ -16,9 +16,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 
 @Configuration
-@EnableTransactionManagement
-@EnableJpaRepositories("org.springframework.koans.boot.persistence.repository")
-@EntityScan({"org.springframework.koans.boot.persistence.entity"})
 public class PersistenceConfiguration {
 
 
