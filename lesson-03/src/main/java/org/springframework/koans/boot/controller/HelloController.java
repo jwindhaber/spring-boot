@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @see RestController
- * @see RequestMapping
  *
  */
+@RestController
 public class HelloController {
 
+    @RequestMapping("/hello")
     String home() {
         return "Hello World!";
     }

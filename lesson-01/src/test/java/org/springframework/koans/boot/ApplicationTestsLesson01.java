@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * See: <a href="http://docs.spring.io/spring-boot/docs/1.4.0.M3/reference/htmlsingle/#boot-features-testing-spring-boot-applications">Testing Spring Boot applications</a>
  */
 @RunWith(SpringRunner.class)
+@SpringBootTest
 public class ApplicationTestsLesson01 {
 
 	@Autowired

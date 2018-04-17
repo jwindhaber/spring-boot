@@ -21,6 +21,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see AutoConfigureMockMvc
  */
 @RunWith(SpringRunner.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 public class ApplicationTestsLesson04 {
 
     @Autowired
