@@ -20,10 +20,10 @@ class Lesson01ContextTest extends Specification {
 
     def "Spring Boot starts and the Environment can be loaded" () {
 
-        when:
+        when: "The environment is fetched from the context"
         Environment environment = context.getEnvironment()
 
-        then:
+        then: "The environment is present"
         noExceptionThrown()
         environment != null
 
