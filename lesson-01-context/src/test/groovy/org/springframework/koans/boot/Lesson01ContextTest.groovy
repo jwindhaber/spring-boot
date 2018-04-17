@@ -13,7 +13,7 @@ import spock.lang.Specification
  * See: <a href="https://docs.spring.io/spring-boot/docs/2.0.0.RELEASE/reference/htmlsingle/#boot-features-testing-spring-boot-applications">Testing Spring Boot applications</a>
  */
 @SpringBootTest
-class Lesson01Test extends Specification {
+class Lesson01ContextTest extends Specification {
 
     @Autowired
     ApplicationContext context

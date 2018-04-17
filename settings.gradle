@@ -7,11 +7,11 @@ def project = { Map map, String projectPath ->
     include projectName as String
 }.curry(projectMap)
 
-project 'lesson-01'
-project 'lesson-02'
-project 'lesson-03'
-project 'lesson-04'
-project 'lesson-05'
+project 'lesson-01-context'
+project 'lesson-02-persistence'
+project 'lesson-03-web'
+project 'lesson-04-persistence-web'
+project 'lesson-05-autostarter-ignite'
 project 'support/ignite-spring-boot-starter'
 
 
