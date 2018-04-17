@@ -17,8 +17,8 @@ import java.util.Arrays;
 /**
  * See:
  * <ul>
- *    <li><a href="http://docs.spring.io/spring-boot/docs/1.4.0.M3/reference/htmlsingle/#boot-features-external-config-typesafe-configuration-properties">Type-safe Configuration Properties</a></li>
- *    <li><a href="http://docs.spring.io/spring-boot/docs/1.4.0.M3/reference/htmlsingle/#boot-features-developing-auto-configuration">Creating your own auto-configuration</a></li>
+ *    <li><a href="http://docs.spring.io/spring-boot/docs/2.0.0.RELEASE/reference/htmlsingle/#boot-features-external-config-typesafe-configuration-properties">Type-safe Configuration Properties</a></li>
+ *    <li><a href="http://docs.spring.io/spring-boot/docs/2.0.0.RELEASE/reference/htmlsingle/#boot-features-developing-auto-configuration">Creating your own auto-configuration</a></li>
  *    <li>Define the spring.factories file</li>
  * </ul>
  *
@@ -30,7 +30,7 @@ import java.util.Arrays;
 public class IgniteAutoConfiguration {
 
     /**
-     *See: <a href="http://docs.spring.io/spring-boot/docs/1.4.0.M3/reference/htmlsingle/#boot-features-condition-annotations">Condition annotations</a>
+     *See: <a href="http://docs.spring.io/spring-boot/docs/2.0.0.RELEASE/reference/htmlsingle/#boot-features-condition-annotations">Condition annotations</a>
      *
      * @see ConditionalOnMissingBean
      *

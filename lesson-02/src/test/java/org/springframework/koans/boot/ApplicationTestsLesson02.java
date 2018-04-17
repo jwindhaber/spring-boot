@@ -10,9 +10,11 @@ import org.springframework.koans.boot.persistence.entity.Person;
 import org.springframework.koans.boot.persistence.repository.PersonRepository;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Optional;
+
 /**
  *
- * See: <a href="http://docs.spring.io/spring-boot/docs/1.4.0.M3/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-jpa-test">Auto-configured Data JPA tests</a>
+ * See: <a href="http://docs.spring.io/spring-boot/docs/2.0.0.RELEASE/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-jpa-test">Auto-configured Data JPA tests</a>
  *
  * @see PersistenceConfiguration
  *
@@ -34,11 +36,11 @@ public class ApplicationTestsLesson02 {
 
         personRepository.save(person);
 
-        final Person personAbc = personRepository.findOne("abc");
+        final Optional<Person> personAbc = personRepository.findById("abc");
 
-        Assert.assertEquals(personAbc.getName(), "Barney");
+        Assert.assertEquals(personAbc.get().getName(), "Barney");
 
-        System.out.println(personAbc.getName());
+        System.out.println(personAbc.get().getName());
 
     }
 

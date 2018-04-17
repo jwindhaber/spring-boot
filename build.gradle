@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.4.0.M3'
+        springBootVersion = '2.0.1.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -24,8 +24,10 @@ subprojects {
 
 
         apply plugin: 'java'
+        apply plugin: 'groovy'
         apply plugin: 'eclipse'
-        apply plugin: 'spring-boot'
+        apply plugin: 'org.springframework.boot'
+        apply plugin: 'io.spring.dependency-management'
 
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
@@ -41,6 +43,10 @@ subprojects {
 
         dependencies {
             optional('org.springframework.boot:spring-boot-configuration-processor')
+//            compile "org.codehaus.groovy:groovy-all:"
+
+             testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+             testCompile 'org.spockframework:spock-spring:1.1-groovy-2.4'
         }
 
 
