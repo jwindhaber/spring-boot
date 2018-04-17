@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @see ConfigurationProperties
  */
+@ConfigurationProperties(prefix = "ignite")
 public class IgniteConfigurationProperties {
 
     /**
