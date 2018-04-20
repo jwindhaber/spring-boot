@@ -1,13 +1,5 @@
 package org.algorithm.recursive;
 
-import com.google.common.base.CharMatcher;
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 /**
  * Find the segment weight of the text where the weight multiplied by the weight of the delimiter has the highest value.
  * A Segment is defined as the the words between two words which have the same weight.
@@ -37,44 +29,7 @@ public class TextAlgorithmUtils {
      */
     public static Long highestWeight(String text) {
 
-        String[] words = StringUtils.split(CharMatcher.anyOf("?!.").removeFrom(text));
-
-        Map<String, Long> mapOfWordsAndTheirWeightsFiltered = Arrays.stream(words)
-                .collect(Collectors.groupingBy(String::toString, Collectors.counting()))
-                .entrySet().stream()
-                .filter(entry -> entry.getValue() > 1)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
-
-        Long highestWeight = 0L;
-        Map<String, Long> segmentDelimiterMap = new HashMap<>();
-
-        for (String word : words)
-            if (mapOfWordsAndTheirWeightsFiltered.containsKey(word)) {
-
-                // Condition for a Segment End
-                if (segmentDelimiterMap.containsKey(word)) {
-
-                    //compute the overall weight
-                    Long segmentWeight = segmentDelimiterMap.get(word) * mapOfWordsAndTheirWeightsFiltered.get(word);
-                    if (segmentWeight > highestWeight) {
-                        highestWeight = segmentWeight;
-                    }
-                    //removing the word
-                    segmentDelimiterMap.remove(word);
-                }
-                // add weight to all open segments
-                final Long weight = mapOfWordsAndTheirWeightsFiltered.get(word);
-
-                for (Map.Entry<String, Long> entry : segmentDelimiterMap.entrySet()) {
-                    segmentDelimiterMap.put(entry.getKey(), entry.getValue() + weight);
-                }
-
-                // put the segment in the map
-                segmentDelimiterMap.put(word, 0L);
-
-            }
-
-        return highestWeight;
+        //TODO implement algorithm and remove exception
+        throw new UnsupportedOperationException();
     }
 }
