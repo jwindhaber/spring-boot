@@ -27,23 +27,18 @@ class Lesson20VoteTest extends Specification {
     @Autowired
     private MockMvc mvc
 
-    private List<VoteDto> votes
+    def "Posting votes for the party to the application and get the actual participants back" () {
 
-    def setupSpec() {
-        this.votes = [
+        setup: "Votes are posted to the application"
+
+        List<VoteDto> votes= [
                 new VoteDto(name: "Tom" , participate: false, timestamp: toDate('18.05.2001')),
                 new VoteDto(name: "TOM" , participate: true,  timestamp: toDate('18.05.2000')),
                 new VoteDto(name: "EllA", participate: true,  timestamp: toDate('18.05.2001')),
                 new VoteDto(name: "Ella", participate: false, timestamp: toDate('18.05.2000')),
         ]
-    }
 
-
-    def "Posting votes for the party to the application and get the actual participants back" () {
-
-        setup: "Votes are posted to the application"
-
-        votes.each {mvc.perform(post("/votes").contentType(MediaType.APPLICATION_JSON).content(toJsonString(it))).andExpect(status().isOk())}
+        votes.each { mvc.perform(post("/votes").contentType(MediaType.APPLICATION_JSON).content(toJsonString(it))).andExpect(status().isOk()) }
 
         when: "All participants are fetched from the application"
 

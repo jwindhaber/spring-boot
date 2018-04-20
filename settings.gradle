@@ -14,6 +14,8 @@ project 'lesson-04-persistence-web'
 project 'lesson-05-autostarter-ignite'
 project 'support/ignite-spring-boot-starter'
 project 'lesson-20-party'
+project 'lesson-30-basics'
+project 'lesson-33-numbers-game'
 
 
 rootProject.children.each { definedProject ->

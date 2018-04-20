@@ -1,0 +1,10 @@
+jar {
+	baseName = 'lesson-33-numbers-game'
+	version = '0.0.1-SNAPSHOT'
+}
+
+dependencies {
+
+	compile group: 'com.google.guava', name: 'guava', version: '24.1-jre'
+
+}

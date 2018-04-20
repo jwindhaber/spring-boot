@@ -1,0 +1,11 @@
+jar {
+	baseName = 'lesson-30-basics'
+	version = '0.0.1-SNAPSHOT'
+}
+
+dependencies {
+
+	compile group: 'com.google.guava', name: 'guava', version: '24.1-jre'
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+
+}
