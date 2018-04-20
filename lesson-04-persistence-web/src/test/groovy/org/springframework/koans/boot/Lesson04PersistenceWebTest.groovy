@@ -6,7 +6,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.koans.boot.persistence.entity.Person
-import org.springframework.koans.boot.persistence.repository.PersonRepository
 import org.springframework.test.web.servlet.MockMvc
 import spock.lang.Specification
 
@@ -26,9 +25,6 @@ class Lesson04PersistenceWebTest extends Specification {
 
     @Autowired
     private MockMvc mvc
-
-    @Autowired
-    private PersonRepository personRepository
 
     def "Getting Barney over the REST interface" () {
 
