@@ -11,7 +11,7 @@ class TextAlgorithmTest extends Specification {
     private static final String loremIpsumText = TextUtils.readTextFromFile()
 
 
-    def "Read the loremIpsumFile from the resource folder"() {
+    def "Read the loremIpsumFile from the resource folder and evaluate highest weight"() {
 
         expect:
         TextAlgorithmUtils.highestWeight(loremIpsumText) == 144832
