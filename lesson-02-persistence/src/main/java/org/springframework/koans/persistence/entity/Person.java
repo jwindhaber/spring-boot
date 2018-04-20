@@ -1,4 +1,4 @@
-package org.springframework.koans.boot.persistence.entity;
+package org.springframework.koans.persistence.entity;
 
 import javax.persistence.*;
 

@@ -1,7 +1,7 @@
-package org.springframework.koans.boot.persistence.repository;
+package org.springframework.koans.persistence.repository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.koans.boot.persistence.entity.Person;
+import org.springframework.koans.persistence.entity.Person;
 
 public interface PersonRepository extends PagingAndSortingRepository<Person, String> {
 

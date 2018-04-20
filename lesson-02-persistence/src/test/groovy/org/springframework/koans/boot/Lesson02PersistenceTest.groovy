@@ -1,21 +1,14 @@
 package org.springframework.koans.boot
 
-import org.junit.Assert
-import org.junit.Test
-import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
-import org.springframework.core.env.Environment
-import org.springframework.koans.boot.persistence.entity.Person
-import org.springframework.koans.boot.persistence.repository.PersonRepository
-import org.springframework.test.context.junit4.SpringRunner
+import org.springframework.koans.persistence.entity.Person
+import org.springframework.koans.persistence.repository.PersonRepository
 import spock.lang.Specification
 
 /**
  *
  * See: <a href="http://docs.spring.io/spring-boot/docs/2.0.0.RELEASE/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-jpa-test">Auto-configured Data JPA tests</a>
- *
- * @see org.springframework.koans.boot.config.persistence.PersistenceConfiguration
  *
  */
 @DataJpaTest
