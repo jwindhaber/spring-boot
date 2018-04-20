@@ -48,7 +48,7 @@ Here you have to configure spring boot with persistence. An embedded h2 database
 Test: **Lesson02PersistenceTest** checks the functionality.
 
 #### lesson-03-web
-Here you have to configure spring boot with web. You have to write a REST Controller which listens to **/hello** and has a **Hello World!** response.
+Here you have to configure spring boot with web. You have to write a REST Controller which listens to **/hello** and has a **Hello World!** response. This Controller hast to be made visible in the test so that only the MVC layer gets tested.
 
 Test: **Lesson03WebTest** checks the functionality.
 
