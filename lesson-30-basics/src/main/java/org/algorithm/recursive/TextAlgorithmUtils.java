@@ -37,7 +37,12 @@ public class TextAlgorithmUtils {
      */
     public static Long highestWeight(String text) {
 
-        String[] words = StringUtils.split(CharMatcher.anyOf("?!.").removeFrom(text));
+        String[] words = StringUtils.split(CharMatcher.anyOf("?!.,").removeFrom(text));
+
+        Map<String, Long> mapOfWordsAndTheirWeights = Arrays.stream(words)
+                .collect(Collectors.groupingBy(String::toString, Collectors.counting()))
+                .entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         Map<String, Long> mapOfWordsAndTheirWeightsFiltered = Arrays.stream(words)
                 .collect(Collectors.groupingBy(String::toString, Collectors.counting()))
@@ -49,31 +54,34 @@ public class TextAlgorithmUtils {
         Long highestWeight = 0L;
         Map<String, Long> segmentDelimiterMap = new HashMap<>();
 
-        for (String word : words)
+        for (String word : words) {
+
+            // Condition for a Segment End
+            if (segmentDelimiterMap.containsKey(word)) {
+
+                //compute the overall weight
+                Long segmentWeight = segmentDelimiterMap.get(word) * mapOfWordsAndTheirWeights.get(word);
+                if (segmentWeight > highestWeight) {
+                    highestWeight = segmentWeight;
+                }
+
+                //removing the word
+                segmentDelimiterMap.remove(word);
+            }
+            // add weight to all open segments
+            final Long weight = mapOfWordsAndTheirWeights.get(word);
+
+            for (Map.Entry<String, Long> entry : segmentDelimiterMap.entrySet()) {
+                segmentDelimiterMap.put(entry.getKey(), entry.getValue() + weight);
+            }
+
             if (mapOfWordsAndTheirWeightsFiltered.containsKey(word)) {
-
-                // Condition for a Segment End
-                if (segmentDelimiterMap.containsKey(word)) {
-
-                    //compute the overall weight
-                    Long segmentWeight = segmentDelimiterMap.get(word) * mapOfWordsAndTheirWeightsFiltered.get(word);
-                    if (segmentWeight > highestWeight) {
-                        highestWeight = segmentWeight;
-                    }
-                    //removing the word
-                    segmentDelimiterMap.remove(word);
-                }
-                // add weight to all open segments
-                final Long weight = mapOfWordsAndTheirWeightsFiltered.get(word);
-
-                for (Map.Entry<String, Long> entry : segmentDelimiterMap.entrySet()) {
-                    segmentDelimiterMap.put(entry.getKey(), entry.getValue() + weight);
-                }
-
                 // put the segment in the map
                 segmentDelimiterMap.put(word, 0L);
 
             }
+
+        }
 
         return highestWeight;
     }
