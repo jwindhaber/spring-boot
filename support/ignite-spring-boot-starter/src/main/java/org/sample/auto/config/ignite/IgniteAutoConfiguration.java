@@ -9,6 +9,7 @@ import org.apache.ignite.spi.discovery.tcp.ipfinder.vm.TcpDiscoveryVmIpFinder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
@@ -25,6 +26,7 @@ import java.util.Arrays;
  *
  */
 @Configuration
+@EnableConfigurationProperties(IgniteConfigurationProperties.class)
 public class IgniteAutoConfiguration {
 
     /**
@@ -33,6 +35,8 @@ public class IgniteAutoConfiguration {
      * @see ConditionalOnMissingBean
      *
      */
+    @Bean
+    @ConditionalOnMissingBean(Ignite.class)
     public Ignite ignite(ApplicationContext applicationContext, IgniteConfigurationProperties igniteConfigurationProperties ) throws IgniteCheckedException {
 
         IgniteConfiguration igniteConfiguration = new IgniteConfiguration();

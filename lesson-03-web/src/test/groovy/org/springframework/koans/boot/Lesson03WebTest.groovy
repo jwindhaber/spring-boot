@@ -1,8 +1,15 @@
 package org.springframework.koans.boot
 
+import org.junit.Assert
+import org.junit.Test
+import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.context.ApplicationContext
 import org.springframework.http.MediaType
 import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.koans.boot.controller.HelloController
+import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.ResultActions
 import spock.lang.Specification
@@ -15,6 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * See: <a href="http://docs.spring.io/spring-boot/docs/2.0.0.RELEASE/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-mvc-tests">Auto-configured Spring MVC tests</a>
  *
  */
+@WebMvcTest(HelloController.class)
 class Lesson03WebTest extends Specification {
 
     @Autowired
