@@ -3,7 +3,9 @@ package org.algorithm.recursive;
 import com.google.common.base.CharMatcher;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -42,40 +44,28 @@ public class TextAlgorithmUtils {
                 .entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-        List<Long> sumWeight = new ArrayList<>();
-        Long headOfWeight = 0L;
-
+        Long weight = 0L;
         Long highestWeight = 0L;
-        Map<String, Integer> segmentDelimiterMap = new HashMap<>();
+        Map<String, Long> currentWeightOfSegmentStart = new HashMap<>();
 
-        Integer index = 0;
         for (String word : words) {
 
             // Condition for a Segment End
-            if (segmentDelimiterMap.containsKey(word)) {
+            if (currentWeightOfSegmentStart.containsKey(word)) {
 
-                long weight = headOfWeight - sumWeight.get(segmentDelimiterMap.get(word));
-                Long segmentWeight = weight * mapOfWordsAndTheirWeights.get(word);
+                Long segmentWeight = (weight - currentWeightOfSegmentStart.get(word)) * mapOfWordsAndTheirWeights.get(word);
                 if (segmentWeight > highestWeight) {
                     highestWeight = segmentWeight;
                 }
-
-                //removing the word
-                segmentDelimiterMap.remove(word);
+                currentWeightOfSegmentStart.remove(word);
             }
-            // add weight to all open segments
-            final Long weight = mapOfWordsAndTheirWeights.get(word);
-            headOfWeight += weight;
-            sumWeight.add(headOfWeight);
 
+            weight += mapOfWordsAndTheirWeights.get(word);
 
             if (mapOfWordsAndTheirWeights.get(word) != 1) {
                 // put the segment in the map if it is not 1. if it is 1 it will only have an opener
-                segmentDelimiterMap.put(word, index);
-
-
+                currentWeightOfSegmentStart.put(word, weight);
             }
-            index++;
 
         }
 
