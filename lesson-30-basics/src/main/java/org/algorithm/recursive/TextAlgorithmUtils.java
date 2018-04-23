@@ -3,9 +3,7 @@ package org.algorithm.recursive;
 import com.google.common.base.CharMatcher;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -44,23 +42,20 @@ public class TextAlgorithmUtils {
                 .entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-        Map<String, Long> mapOfWordsAndTheirWeightsFiltered = Arrays.stream(words)
-                .collect(Collectors.groupingBy(String::toString, Collectors.counting()))
-                .entrySet().stream()
-                .filter(entry -> entry.getValue() > 1)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
+        List<Long> sumWeight = new ArrayList<>();
+        Long headOfWeight = 0L;
 
         Long highestWeight = 0L;
-        Map<String, Long> segmentDelimiterMap = new HashMap<>();
+        Map<String, Integer> segmentDelimiterMap = new HashMap<>();
 
+        Integer index = 0;
         for (String word : words) {
 
             // Condition for a Segment End
             if (segmentDelimiterMap.containsKey(word)) {
 
-                //compute the overall weight
-                Long segmentWeight = segmentDelimiterMap.get(word) * mapOfWordsAndTheirWeights.get(word);
+                long weight = headOfWeight - sumWeight.get(segmentDelimiterMap.get(word));
+                Long segmentWeight = weight * mapOfWordsAndTheirWeights.get(word);
                 if (segmentWeight > highestWeight) {
                     highestWeight = segmentWeight;
                 }
@@ -70,16 +65,17 @@ public class TextAlgorithmUtils {
             }
             // add weight to all open segments
             final Long weight = mapOfWordsAndTheirWeights.get(word);
+            headOfWeight += weight;
+            sumWeight.add(headOfWeight);
 
-            for (Map.Entry<String, Long> entry : segmentDelimiterMap.entrySet()) {
-                segmentDelimiterMap.put(entry.getKey(), entry.getValue() + weight);
+
+            if (mapOfWordsAndTheirWeights.get(word) != 1) {
+                // put the segment in the map if it is not 1. if it is 1 it will only have an opener
+                segmentDelimiterMap.put(word, index);
+
+
             }
-
-            if (mapOfWordsAndTheirWeightsFiltered.containsKey(word)) {
-                // put the segment in the map
-                segmentDelimiterMap.put(word, 0L);
-
-            }
+            index++;
 
         }
 
